@@ -11,10 +11,21 @@ var express = require('express'),
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://AdminSammy:jannyburzinski123456@meeting.burzinski.de'); 
 
+const rateLimit = require("express-rate-limit");
+
+app.set('trust proxy', 1);
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100
+});
+
+app.use(limiter);
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+ 
 var hasteRoutes = require('./routes/index.routes');
 hasteRoutes(app);
 
