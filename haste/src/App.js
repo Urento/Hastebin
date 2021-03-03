@@ -12,8 +12,11 @@ import FooterTemplate from "./components/Footer";
 
 const uniqid = require("uniqid");
 
+const randomstring = require("randomstring");
+const crypto = require('crypto');
 
-// encrypt data 
+const ENCRYPTION_KEY = "QfTjWmZq4t7w!z%C*F-JaNdRgUkXp2r5"; // Must be 256 bits (32 characters)
+const IV_LENGTH = 16; // For AES, this is always 16
 
 export default class App extends React.Component {
   constructor(props) {
@@ -29,6 +32,16 @@ export default class App extends React.Component {
 
   handleChange(event) {
     this.setState({ content: event.target.value });
+  }
+  
+  encrypt(text) {
+   let iv = crypto.randomBytes(IV_LENGTH);
+   let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv);
+   let encrypted = cipher.update(text);
+  
+   encrypted = Buffer.concat([encrypted, cipher.final()]);
+  
+   return iv.toString('hex') + ':' + encrypted.toString('hex');
   }
 
   handleSubmit(e) {
@@ -47,7 +60,7 @@ export default class App extends React.Component {
 
     const dataObject = {
       id: generatedId,
-      content: hastebin.content,
+      content: this.encrypt(hastebin.content),
     };
 
     const requestOptions = {

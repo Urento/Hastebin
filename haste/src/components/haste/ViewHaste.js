@@ -4,6 +4,12 @@ import FooterTemplate from "../Footer";
 
 const uniqid = require("uniqid");
 
+const randomstring = require("randomstring");
+const crypto = require('crypto');
+
+const ENCRYPTION_KEY = "QfTjWmZq4t7w!z%C*F-JaNdRgUkXp2r5"; // Must be 256 bits (32 characters)
+const IV_LENGTH = 16; // For AES, this is always 16
+
 export default class ViewHaste extends React.Component {
   constructor(props) {
     super(props);
@@ -15,11 +21,23 @@ export default class ViewHaste extends React.Component {
     };
   }
 
+  decrypt(text) {
+    let textParts = text.split(':');
+    let iv = Buffer.from(textParts.shift(), 'hex');
+    let encryptedText = Buffer.from(textParts.join(':'), 'hex');
+    let decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv);
+    let decrypted = decipher.update(encryptedText);
+   
+    decrypted = Buffer.concat([decrypted, decipher.final()]);
+   
+    return decrypted.toString();
+   }
+
   componentDidMount() {
     fetch("http://localhost:8080/haste/" + this.state.id)
       .then((res) => res.json())
       .then((data) => {
-        this.setState({ content: data.content });
+        this.setState({ content: this.decrypt(data.content) });
         this.setState({
           isLoaded: true,
         });
