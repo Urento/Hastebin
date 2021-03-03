@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Form, Button } from "react-bootstrap";
+import FooterTemplate from "../Footer";
 
 const uniqid = require("uniqid");
 
@@ -30,6 +31,16 @@ export default class ViewHaste extends React.Component {
       });
   }
 
+  downloadTxtFile = (e) => {
+    e.preventDefault();
+    const element = document.createElement("a");
+    const file = new Blob([document.getElementById('content').value], {type: 'text/plain'});
+    element.href = URL.createObjectURL(file);
+    element.download = this.state.id+".txt";
+    document.body.appendChild(element); // Required for this to work in FireFox
+    element.click();
+  }
+
   render() {
     if (this.state.error) {
       return (
@@ -43,6 +54,9 @@ export default class ViewHaste extends React.Component {
       return (
         <Container className="p-3">
           <Form>
+          <Button type="submit" variant="primary" onClick={this.downloadTxtFile} style={{float:"right"}}>
+              Download
+            </Button><br/><br/>
             <Form.Group>
               <Form.Control
                 defaultValue={this.state.content}
@@ -52,6 +66,7 @@ export default class ViewHaste extends React.Component {
               />
             </Form.Group>
           </Form>
+          <FooterTemplate/>
         </Container>
       );
     }

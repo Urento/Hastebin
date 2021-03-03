@@ -8,6 +8,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
+import FooterTemplate from "./components/Footer";
 
 const uniqid = require("uniqid");
 
@@ -42,7 +43,7 @@ export default class App extends React.Component {
 
     const generatedId = uniqid();
 
-    if(hastebin.content == "") return
+    if(hastebin.content === "") return
 
     const dataObject = {
       id: generatedId,
@@ -86,6 +87,7 @@ export default class App extends React.Component {
               Create
             </Button>
           </Form>
+          <FooterTemplate/>
         </Container>
     );
   }

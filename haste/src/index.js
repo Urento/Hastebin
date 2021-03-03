@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router, BrowserRouter, Route, Switch} from 'react-router-dom';
 import NavbarTemplate from "./components/Navbar";
+import "./index.css";
 
 ReactDOM.render(
   <BrowserRouter>

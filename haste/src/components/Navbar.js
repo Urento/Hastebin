@@ -18,7 +18,7 @@ export default class NavbarTemplate extends React.Component {
     return (
       <Router>
         <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="/">Burzinski</Navbar.Brand>
+          <Navbar.Brand href="/">Hastebin</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
