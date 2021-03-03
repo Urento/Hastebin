@@ -5,7 +5,7 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import {Navbar, Nav} from "react-bootstrap";
+import { Navbar, Nav, Form, FormControl, Button } from "react-bootstrap";
 import ViewHaste from "./haste/ViewHaste";
 import App from "../App";
 
@@ -24,6 +24,9 @@ export default class NavbarTemplate extends React.Component {
             <Nav className="mr-auto">
               <Nav.Link href="/">New Haste</Nav.Link>
             </Nav>
+            <Form inline>
+              <Button variant="outline-success">LOGIN</Button>
+            </Form>
           </Navbar.Collapse>
         </Navbar>
         <Switch>
