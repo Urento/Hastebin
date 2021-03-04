@@ -7,8 +7,8 @@ const uniqid = require("uniqid");
 const randomstring = require("randomstring");
 const crypto = require('crypto');
 
-const ENCRYPTION_KEY = "QfTjWmZq4t7w!z%C*F-JaNdRgUkXp2r5"; // Must be 256 bits (32 characters)
-const IV_LENGTH = 16; // For AES, this is always 16
+const ENCRYPTION_KEY = "QfTjWmZq4t7w!z%C*F-JaNdRgUkXp2r5";
+const IV_LENGTH = 16;
 
 export default class ViewHaste extends React.Component {
   constructor(props) {
