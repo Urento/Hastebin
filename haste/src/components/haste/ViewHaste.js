@@ -2,13 +2,8 @@ import React from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import FooterTemplate from "../Footer";
 
-const uniqid = require("uniqid");
-
-const randomstring = require("randomstring");
-const crypto = require('crypto');
-
+const crypto = require("crypto");
 const ENCRYPTION_KEY = "QfTjWmZq4t7w!z%C*F-JaNdRgUkXp2r5";
-const IV_LENGTH = 16;
 
 export default class ViewHaste extends React.Component {
   constructor(props) {
@@ -22,16 +17,20 @@ export default class ViewHaste extends React.Component {
   }
 
   decrypt(text) {
-    let textParts = text.split(':');
-    let iv = Buffer.from(textParts.shift(), 'hex');
-    let encryptedText = Buffer.from(textParts.join(':'), 'hex');
-    let decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv);
+    let textParts = text.split(":");
+    let iv = Buffer.from(textParts.shift(), "hex");
+    let encryptedText = Buffer.from(textParts.join(":"), "hex");
+    let decipher = crypto.createDecipheriv(
+      "aes-256-cbc",
+      Buffer.from(ENCRYPTION_KEY),
+      iv
+    );
     let decrypted = decipher.update(encryptedText);
-   
+
     decrypted = Buffer.concat([decrypted, decipher.final()]);
-   
+
     return decrypted.toString();
-   }
+  }
 
   componentDidMount() {
     fetch("http://localhost:8080/haste/" + this.state.id)
@@ -52,12 +51,14 @@ export default class ViewHaste extends React.Component {
   downloadTxtFile = (e) => {
     e.preventDefault();
     const element = document.createElement("a");
-    const file = new Blob([document.getElementById('content').value], {type: 'text/plain'});
+    const file = new Blob([document.getElementById("content").value], {
+      type: "text/plain",
+    });
     element.href = URL.createObjectURL(file);
-    element.download = this.state.id+".txt";
+    element.download = this.state.id + ".txt";
     document.body.appendChild(element); // Required for this to work in FireFox
     element.click();
-  }
+  };
 
   render() {
     if (this.state.error) {
@@ -72,9 +73,16 @@ export default class ViewHaste extends React.Component {
       return (
         <Container className="p-3">
           <Form>
-          <Button type="submit" variant="primary" onClick={this.downloadTxtFile} style={{float:"right"}}>
+            <Button
+              type="submit"
+              variant="primary"
+              onClick={this.downloadTxtFile}
+              style={{ float: "right" }}
+            >
               Download
-            </Button><br/><br/>
+            </Button>
+            <br />
+            <br />
             <Form.Group>
               <Form.Control
                 defaultValue={this.state.content}
@@ -84,7 +92,7 @@ export default class ViewHaste extends React.Component {
               />
             </Form.Group>
           </Form>
-          <FooterTemplate/>
+          <FooterTemplate />
         </Container>
       );
     }
