@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:14
 
 WORKDIR /
 
@@ -12,4 +12,4 @@ ENV PORT=8080
 
 EXPOSE 8080
 
-CMD [ "npm", "start" ]
+CMD [ "node", "server.js" ]
