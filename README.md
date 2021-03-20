@@ -1,4 +1,5 @@
 # Hastebin
+All pastes are AES256 encrypted, we cannot know what you paste...
 
 # Darkmode
 ![hastebin_darkmode2](https://user-images.githubusercontent.com/37121584/111868560-f5ee9080-897a-11eb-8f57-e692a522f74f.PNG)
