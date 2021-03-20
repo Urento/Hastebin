@@ -9,11 +9,11 @@
 ![hastebin_lightmode2](https://user-images.githubusercontent.com/37121584/111868569-fedf6200-897a-11eb-85d0-a3bcc1cb80fd.PNG)
 
 # Server Setup
-Go into the Server Directory and create a .env file with the same content as the .env.example. You just need to adjust the MONGODB_URI.
+Run npm install then go into the Server Directory and create a .env file with the same content as the .env.example. You just need to adjust the MONGODB_URI.
 Then you can just start it with npm start
 
 # React Setup
-Go into the Haste Directory and create a .env file with the same content as the .env.example. You just need to adjust the REACT_APP_ENCRYPTION_KEY.
+Run npm install then go into the Haste Directory and create a .env file with the same content as the .env.example. You just need to adjust the REACT_APP_ENCRYPTION_KEY.
 Then you can just start it with npm start.
 
 You can generate a Encryption Key at https://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx with 256-bit
