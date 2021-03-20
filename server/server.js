@@ -6,11 +6,15 @@ var express = require("express"),
   cors = require("cors"),
   fs = require("fs"),
   path = require("path"),
-  haste = require("./models/index.model");
+  haste = require("./models/index.model"),
+  chalk = require("chalk");
 require("dotenv").config();
 
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 const rateLimit = require("express-rate-limit");
 
@@ -23,7 +27,13 @@ const limiter = rateLimit({
 
 app.use(limiter);
 
+var requestLogger = function (req, res, next) {
+  console.log(req.method + " " + req.path + " " + res.statusCode);
+  next();
+};
+
 app.use(cors());
+app.use(requestLogger);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -34,6 +44,6 @@ app.use(function (req, res) {
   res.status(404).send({ error: "Not Authorized" });
 });
 
-app.listen(port);
-
-console.log("API Server started on: " + port);
+app.listen(port, () => {
+  console.log(chalk.green("API Server started on: " + port));
+});
