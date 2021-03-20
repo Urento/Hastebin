@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
-import ViewHaste from "./haste/ViewHaste";
-import App from "../App";
+import ViewHaste from ".././haste/ViewHaste";
+import App from "../../App";
 import { ThemeProvider } from "styled-components";
-import Toggle from "./Toggler";
-import { GlobalStyles } from "./globalStyles";
-import { lightTheme, darkTheme } from "./Themes";
-import { useDarkMode } from "./useDarkMode";
+import Toggle from "../themes/Toggler";
+import { GlobalStyles } from "../themes/globalStyles";
+import { lightTheme, darkTheme } from "../themes/Themes";
+import { useDarkMode } from "../themes/useDarkMode";
 
 const NavbarTemplate = () => {
   const [theme, themeToggler, mountedComponent] = useDarkMode();

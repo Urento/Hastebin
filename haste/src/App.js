@@ -1,14 +1,13 @@
 import React from "react";
 import "./App.css";
 import { Container, Form, Button } from "react-bootstrap";
-import FooterTemplate from "./components/Footer";
-
+import FooterTemplate from "./components/footer/Footer";
+require("dotenv").config();
 const uniqid = require("uniqid");
-
 const crypto = require("crypto");
 
-const ENCRYPTION_KEY = "QfTjWmZq4t7w!z%C*F-JaNdRgUkXp2r5"; // Must be 256 bits (32 characters)
-const IV_LENGTH = 16; // For AES, this is always 16
+const ENCRYPTION_KEY = process.env.REACT_APP_ENCRYPTION_KEY;
+const IV_LENGTH = 16;
 
 export default class App extends React.Component {
   constructor(props) {
@@ -42,6 +41,7 @@ export default class App extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log(ENCRYPTION_KEY);
 
     const { content, id } = this.state;
 

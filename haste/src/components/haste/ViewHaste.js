@@ -1,9 +1,10 @@
 import React from "react";
 import { Container, Form, Button } from "react-bootstrap";
-import FooterTemplate from "../Footer";
+import FooterTemplate from "../footer/Footer";
+require("dotenv").config();
 
 const crypto = require("crypto");
-const ENCRYPTION_KEY = "QfTjWmZq4t7w!z%C*F-JaNdRgUkXp2r5";
+const ENCRYPTION_KEY = process.env.REACT_APP_ENCRYPTION_KEY;
 
 export default class ViewHaste extends React.Component {
   constructor(props) {
