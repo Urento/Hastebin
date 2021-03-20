@@ -5,8 +5,7 @@ export default class FooterTemplate extends React.Component {
     return (
       <div className="footer">
         <p>
-          &copy; Developed by{" "}
-          <a href="https://github.com/janburzinski/">Jan Burzinski</a>
+          &copy; Developed by <a href="https://github.com/urento/">Urento</a>
         </p>
       </div>
     );
