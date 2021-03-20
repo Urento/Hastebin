@@ -41,7 +41,6 @@ export default class App extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    console.log(ENCRYPTION_KEY);
 
     const { content, id } = this.state;
 
