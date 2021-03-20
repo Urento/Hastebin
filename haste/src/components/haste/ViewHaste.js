@@ -34,7 +34,13 @@ export default class ViewHaste extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:8080/haste/" + this.state.id)
+    fetch(
+      process.env.REACT_APP_HTTP_OR_HTTPS +
+        "://" +
+        process.env.REACT_APP_HOSTNAME +
+        ":8080/haste/" +
+        this.state.id
+    )
       .then((res) => res.json())
       .then((data) => {
         this.setState({ content: this.decrypt(data.content) });
@@ -84,14 +90,26 @@ export default class ViewHaste extends React.Component {
             </Button>
             <br />
             <br />
-            <Form.Group>
-              <Form.Control
-                defaultValue={this.state.content}
-                id="content"
-                as="textarea"
-                rows={20}
-              />
-            </Form.Group>
+            {window.localStorage.getItem("theme") === "light" ? (
+              <Form.Group>
+                <Form.Control
+                  defaultValue={this.state.content}
+                  id="content"
+                  as="textarea"
+                  rows={20}
+                />
+              </Form.Group>
+            ) : (
+              <Form.Group>
+                <Form.Control
+                  defaultValue={this.state.content}
+                  id="content"
+                  as="textarea"
+                  style={{ backgroundColor: "#363537", color: "#FAFAFA" }}
+                  rows={20}
+                />
+              </Form.Group>
+            )}
           </Form>
           <FooterTemplate />
         </Container>

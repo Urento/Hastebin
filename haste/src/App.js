@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { Container, Form, Button } from "react-bootstrap";
 import FooterTemplate from "./components/footer/Footer";
+
 require("dotenv").config();
 const uniqid = require("uniqid");
 const crypto = require("crypto");
@@ -43,6 +44,7 @@ export default class App extends React.Component {
     e.preventDefault();
 
     const { content, id } = this.state;
+    const { history } = this.props;
 
     const hastebin = {
       content,
@@ -51,6 +53,7 @@ export default class App extends React.Component {
 
     const generatedId = uniqid();
 
+    //TODO: Add Custom Filter
     if (hastebin.content === "") return;
 
     const dataObject = {
@@ -66,13 +69,15 @@ export default class App extends React.Component {
       body: JSON.stringify(dataObject),
     };
 
-    fetch("http://localhost:8080/haste", requestOptions)
-      .then(() => console.log("Haste created " + generatedId))
-      .catch((err) => {
-        console.error(err);
-      });
-
-    const { history } = this.props;
+    fetch(
+      process.env.REACT_APP_HTTP_OR_HTTPS +
+        "://" +
+        process.env.REACT_APP_HOSTNAME +
+        ":8080/haste",
+      requestOptions
+    ).catch((err) => {
+      console.error(err);
+    });
 
     setTimeout(() => {
       history.push("/v/" + generatedId);
@@ -84,12 +89,22 @@ export default class App extends React.Component {
       <Container className="p-3">
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
-            <Form.Control
-              onChange={this.handleChange}
-              id="content"
-              as="textarea"
-              rows={20}
-            />
+            {window.localStorage.getItem("theme") === "light" ? (
+              <Form.Control
+                onChange={this.handleChange}
+                id="content"
+                as="textarea"
+                rows={20}
+              />
+            ) : (
+              <Form.Control
+                onChange={this.handleChange}
+                id="content"
+                as="textarea"
+                style={{ backgroundColor: "#363537", color: "#FAFAFA" }}
+                rows={20}
+              />
+            )}
           </Form.Group>
           <Button type="submit" variant="primary">
             Create
