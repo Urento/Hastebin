@@ -2,8 +2,8 @@
 All pastes are AES256 encrypted, we cannot know what you paste...
 
 # Darkmode
-![hastebin_darkmode2](https://user-images.githubusercontent.com/37121584/111868560-f5ee9080-897a-11eb-8f57-e692a522f74f.PNG)
-![hastebin_darkmode1](https://user-images.githubusercontent.com/37121584/111868562-f7b85400-897a-11eb-89a1-d0c9deb4b979.PNG)
+![hastebin_darkmode2](https://user-images.githubusercontent.com/58522564/111871489-a1eba800-898a-11eb-9147-1d9c1e9e26d4.PNG)
+![hastebin_darkmode1](https://user-images.githubusercontent.com/58522564/111871490-a31cd500-898a-11eb-9410-583d10428af2.PNG)
 
 # Lightmode
 ![hastebin_lightmode1](https://user-images.githubusercontent.com/37121584/111868566-fe46cb80-897a-11eb-8fdb-3e9dcdc59c3a.PNG)
