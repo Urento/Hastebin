@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { Container, Form, Button } from "react-bootstrap";
 import FooterTemplate from "./components/footer/Footer";
+import { Translate } from "./components/language/Language";
 
 require("dotenv").config();
 const uniqid = require("uniqid");
@@ -107,7 +108,7 @@ export default class App extends React.Component {
             )}
           </Form.Group>
           <Button type="submit" variant="primary">
-            Create
+            {Translate("createButton")}
           </Button>
         </Form>
         <FooterTemplate />
