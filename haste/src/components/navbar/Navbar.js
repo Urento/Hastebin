@@ -12,7 +12,9 @@ import { useDarkMode } from "../themes/useDarkMode";
 const NavbarTemplate = () => {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
   const themeMode = theme === "light" ? lightTheme : darkTheme;
+
   if (!mountedComponent) return <div />;
+
   return (
     <Router>
       {theme === "light" ? (
@@ -68,4 +70,5 @@ const NavbarTemplate = () => {
     </Router>
   );
 };
+
 export default NavbarTemplate;

@@ -1,6 +1,7 @@
 import React from "react";
 import { func, string } from "prop-types";
 import styled from "styled-components";
+
 const Button = styled.button`
   background: ${({ theme }) => theme.background};
   border: 2px solid ${({ theme }) => theme.toggleBorder};
@@ -11,15 +12,18 @@ const Button = styled.button`
   padding: 0.6rem;
   }
 `;
+
 const Toggle = ({ theme, toggleTheme }) => {
-  if (theme === "light") {
-    return <Button onClick={toggleTheme}>🌙</Button>;
-  } else {
-    return <Button onClick={toggleTheme}>☀️</Button>;
-  }
+  return theme === "light" ? (
+    <Button onClick={toggleTheme}>🌙</Button>
+  ) : (
+    <Button onClick={toggleTheme}>☀️</Button>
+  );
 };
+
 Toggle.propTypes = {
   theme: string.isRequired,
   toggleTheme: func.isRequired,
 };
+
 export default Toggle;
