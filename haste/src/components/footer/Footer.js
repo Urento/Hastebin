@@ -1,4 +1,5 @@
 import React from "react";
+import { NavDropdown } from "react-bootstrap";
 
 export default class FooterTemplate extends React.Component {
   render() {

@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Form, Button } from "react-bootstrap";
+import { Translate } from "../language/Language";
 import FooterTemplate from "../footer/Footer";
 require("dotenv").config();
 
@@ -86,7 +87,7 @@ export default class ViewHaste extends React.Component {
               onClick={this.downloadTxtFile}
               style={{ float: "right" }}
             >
-              Download
+              {Translate("downloadButton")}
             </Button>
             <br />
             <br />

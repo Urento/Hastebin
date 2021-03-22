@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import ViewHaste from ".././haste/ViewHaste";
 import App from "../../App";
 import { ThemeProvider } from "styled-components";
@@ -8,6 +8,13 @@ import Toggle from "../themes/Toggler";
 import { GlobalStyles } from "../themes/globalStyles";
 import { lightTheme, darkTheme } from "../themes/Themes";
 import { useDarkMode } from "../themes/useDarkMode";
+import { Languages } from "../language/Languages";
+import { Translate } from "../language/Language";
+
+const changeLanguage = (newLang) => {
+  window.localStorage.setItem("language", newLang);
+  window.location.reload(false);
+};
 
 const NavbarTemplate = () => {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
@@ -23,7 +30,7 @@ const NavbarTemplate = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="/">New Haste</Nav.Link>
+              <Nav.Link href="/">{Translate("newHaste")}</Nav.Link>
             </Nav>
             <ThemeProvider theme={themeMode}>
               <>
@@ -50,6 +57,26 @@ const NavbarTemplate = () => {
                 New Haste
               </Nav.Link>
             </Nav>
+            <NavDropdown
+              bg="dark"
+              style={{ color: "#fff" }}
+              title={
+                window.localStorage.getItem("language") != null
+                  ? window.localStorage.getItem("language")
+                  : "Language"
+              }
+              id="collasible-nav-dropdown"
+            >
+              {Languages.map((language) => (
+                <NavDropdown.Item
+                  onClick={() => {
+                    changeLanguage(language);
+                  }}
+                >
+                  {language}
+                </NavDropdown.Item>
+              ))}
+            </NavDropdown>
             <ThemeProvider theme={themeMode}>
               <>
                 <GlobalStyles />
