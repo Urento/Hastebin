@@ -32,6 +32,26 @@ const NavbarTemplate = () => {
             <Nav className="mr-auto">
               <Nav.Link href="/">{Translate("newHaste")}</Nav.Link>
             </Nav>
+            <NavDropdown
+              bg="dark"
+              style={{ color: "#fff" }}
+              title={
+                window.localStorage.getItem("language") != null
+                  ? window.localStorage.getItem("language")
+                  : "Language"
+              }
+              id="collasible-nav-dropdown"
+            >
+              {Languages.map((language) => (
+                <NavDropdown.Item
+                  onClick={() => {
+                    changeLanguage(language);
+                  }}
+                >
+                  {language}
+                </NavDropdown.Item>
+              ))}
+            </NavDropdown>
             <ThemeProvider theme={themeMode}>
               <>
                 <GlobalStyles />
