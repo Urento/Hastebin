@@ -3,8 +3,9 @@ import "./App.css";
 import { Container, Form, Button } from "react-bootstrap";
 import FooterTemplate from "./components/footer/Footer";
 import { Translate } from "./components/language/Language";
-
+import { Filter } from "./components/filter/Filter";
 require("dotenv").config();
+
 const uniqid = require("uniqid");
 const crypto = require("crypto");
 
@@ -53,9 +54,16 @@ export default class App extends React.Component {
     };
 
     const generatedId = uniqid();
+    let filterDetected = false;
 
-    //TODO: Add Custom Filter
-    if (hastebin.content === "") return;
+    if (!hastebin.content.replace(/\s/g, "").length) return;
+
+    Filter.forEach((i) => {
+      if (hastebin.content === i) {
+        filterDetected = true;
+      }
+    });
+    if (filterDetected === true) return;
 
     const dataObject = {
       id: generatedId,

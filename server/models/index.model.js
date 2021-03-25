@@ -1,5 +1,5 @@
-'use strict';
-var mongoose = require('mongoose');
+"use strict";
+var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var HasteSchema = new Schema({
@@ -11,8 +11,8 @@ var HasteSchema = new Schema({
   },
   created_date: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
 });
 
-module.exports = mongoose.model('haste', HasteSchema);
+module.exports = mongoose.model("haste", HasteSchema);
