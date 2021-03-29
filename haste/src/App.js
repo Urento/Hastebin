@@ -82,7 +82,7 @@ export default class App extends React.Component {
       process.env.REACT_APP_HTTP_OR_HTTPS +
         "://" +
         process.env.REACT_APP_HOSTNAME +
-        ":8080/haste",
+        "/haste",
       requestOptions
     ).catch((err) => {
       console.error(err);

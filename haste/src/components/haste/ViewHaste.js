@@ -39,7 +39,7 @@ export default class ViewHaste extends React.Component {
       process.env.REACT_APP_HTTP_OR_HTTPS +
         "://" +
         process.env.REACT_APP_HOSTNAME +
-        ":8080/haste/" +
+        "/haste/" +
         this.state.id
     )
       .then((res) => res.json())

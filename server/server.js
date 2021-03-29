@@ -1,6 +1,5 @@
 var express = require("express"),
   app = express(),
-  port = process.env.PORT || 8080,
   mongoose = require("mongoose"),
   bodyParser = require("body-parser"),
   cors = require("cors"),
@@ -9,6 +8,8 @@ var express = require("express"),
   haste = require("./models/index.model"),
   chalk = require("chalk");
 require("dotenv").config();
+
+const port = process.env.PORT;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI, {
