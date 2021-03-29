@@ -19,20 +19,18 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 const rateLimit = require("express-rate-limit");
 
-app.set("trust proxy", 1);
-
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 100,
 });
-
-app.use(limiter);
 
 var requestLogger = function (req, res, next) {
   console.log(req.method + " " + req.path + " " + res.statusCode);
   next();
 };
 
+app.set("trust proxy", 1);
+app.use(limiter);
 app.use(cors());
 app.use(requestLogger);
 app.use(bodyParser.urlencoded({ extended: true }));

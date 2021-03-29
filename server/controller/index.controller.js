@@ -19,9 +19,9 @@ exports.create_a_haste = function (req, res) {
 };
 
 exports.get_haste_byid = function (req, res) {
-  Haste.findOne({ id: req.params.id }, function (err, customerInfo) {
+  Haste.findOne({ id: req.params.id }, function (err, hasteInfo) {
     if (err) res.send(err);
-    res.json(customerInfo);
+    res.json(hasteInfo);
   });
 };
 
