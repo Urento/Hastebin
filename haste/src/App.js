@@ -74,6 +74,7 @@ export default class App extends React.Component {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": process.env.REACT_APP_HOSTNAME,
       },
       body: JSON.stringify(dataObject),
     };

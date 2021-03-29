@@ -35,12 +35,22 @@ export default class ViewHaste extends React.Component {
   }
 
   componentDidMount() {
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": process.env.REACT_APP_HOSTNAME,
+      },
+      body: JSON.stringify(dataObject),
+    };
+
     fetch(
       process.env.REACT_APP_HTTP_OR_HTTPS +
         "://" +
         process.env.REACT_APP_HOSTNAME +
         "/haste/" +
-        this.state.id
+        this.state.id,
+      requestOptions
     )
       .then((res) => res.json())
       .then((data) => {
