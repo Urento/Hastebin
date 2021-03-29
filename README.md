@@ -18,3 +18,6 @@ Run npm install then go into the Haste Directory and create a .env file with the
 Then you can just start it with npm start.
 
 You can generate a Encryption Key at https://www.allkeysgenerator.com/Random/Security-Encryption-Key-Generator.aspx with 256-bit
+
+# TODO
+- Implement mikroORM
