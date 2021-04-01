@@ -13,8 +13,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./server
+    defaults:  
+      run:  
+        working-directory: ./server  
 
     strategy:
       matrix:
