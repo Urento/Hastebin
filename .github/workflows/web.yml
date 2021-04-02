@@ -10,9 +10,11 @@ jobs:
   deploy:
     name: Web
     runs-on: ubuntu-latest
+    
     defaults:  
-      run:  
-        working-directory: ./server
+      run: |
+        cd haste/
+        
 
     steps:
       - uses: actions/checkout@v1
