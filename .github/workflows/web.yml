@@ -7,8 +7,8 @@ on:
     branches: [ main, development ]
 
 jobs:
-  deploy:
-    name: Web
+  build:
+    name: Build
     runs-on: ubuntu-latest
     
     defaults:  
