@@ -1,22 +1,18 @@
-
-
-
-
 name: Web
 
 on:
   push:
-    branches:
-      - main
-      - development
+    branches: [ main, development ]
+  pull_request:
+    branches: [ main, development ]
 
 jobs:
   deploy:
     name: Web
     runs-on: ubuntu-latest
-
-    env:
-      SOURCE_DIR: "haste/"
+    defaults:  
+      run:  
+        working-directory: ./server
 
     steps:
       - uses: actions/checkout@v1
