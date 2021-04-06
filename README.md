@@ -21,4 +21,4 @@ You can generate a Encryption Key at https://www.allkeysgenerator.com/Random/Sec
 
 # TODO
 - Implement mikroORM
-- Implement API
+- Add API as NPM Package
