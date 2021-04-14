@@ -22,3 +22,4 @@ You can generate a Encryption Key at https://www.allkeysgenerator.com/Random/Sec
 # TODO
 - Implement mikroORM
 - Add API as NPM Package
+- Improve Filter and display message when word in filter is included
