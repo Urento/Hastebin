@@ -4,6 +4,7 @@ import { Container, Form, Button } from "react-bootstrap";
 import FooterTemplate from "./components/footer/Footer";
 import { Translate } from "./components/language/Language";
 import { Filter } from "./components/filter/Filter";
+import swal from "sweetalert";
 require("dotenv").config();
 
 const uniqid = require("uniqid");
@@ -55,15 +56,20 @@ export default class App extends React.Component {
 
     const generatedId = uniqid();
     let filterDetected = false;
+    let word = "";
 
     if (!hastebin.content.replace(/\s/g, "").length) return;
 
     Filter.forEach((i) => {
-      if (hastebin.content === i) {
+      if (hastebin.content.includes(i)) {
+        word = i;
         filterDetected = true;
       }
     });
-    if (filterDetected === true) return;
+    if (filterDetected === true) {
+      swal("Filter", `${word} is not allowed to be used in a text`, "error");
+      return;
+    }
 
     const dataObject = {
       id: generatedId,
