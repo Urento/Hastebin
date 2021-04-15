@@ -18,3 +18,4 @@ You can generate a Encryption Key at https://www.allkeysgenerator.com/Random/Sec
 
 - Implement mikroORM
 - Add API as NPM Package
+- Implement Delete Haste into Web
