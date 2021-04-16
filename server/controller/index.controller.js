@@ -24,15 +24,3 @@ exports.get_haste_byid = function (req, res) {
     res.json(hasteInfo);
   });
 };
-
-exports.delete_a_haste = function (req, res) {
-  Haste.remove(
-    {
-      id: req.params.id,
-    },
-    function (err, task) {
-      if (err) res.send(err);
-      res.json({ message: "Haste was successfully deleted" });
-    }
-  );
-};
