@@ -2,6 +2,9 @@
 
 All pastes are AES256 encrypted, we cannot know what you paste...
 
+# API
+https://www.npmjs.com/package/hastebin-api
+
 # Server Setup
 
 Run npm install then go into the Server Directory and create a .env file with the same content as the .env.example. You just need to adjust the MONGODB_URI.
@@ -17,4 +20,4 @@ You can generate a Encryption Key at https://www.allkeysgenerator.com/Random/Sec
 # TODO
 
 - Implement mikroORM
-- Add API as NPM Package
+- Implement Delete Haste into Web
