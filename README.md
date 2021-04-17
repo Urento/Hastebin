@@ -1,4 +1,7 @@
 # Hastebin
+[![Server](https://github.com/Urento/Hastebin/actions/workflows/server.yml/badge.svg)](https://github.com/Urento/Hastebin/actions/workflows/server.yml)
+[![Web](https://github.com/Urento/Hastebin/actions/workflows/web.yml/badge.svg)](https://github.com/Urento/Hastebin/actions/workflows/web.yml)
+[![CodeQL](https://github.com/Urento/Hastebin/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Urento/Hastebin/actions/workflows/codeql-analysis.yml)
 
 All pastes are AES256 encrypted, we cannot know what you paste...
 
